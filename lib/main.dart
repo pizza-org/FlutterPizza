@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       // en mi caso account
       initialRoute: 'account',
       routes: {'account': (context) => AccountPage()},
+      debugShowCheckedModeBanner: false,
     );
   }
 }
