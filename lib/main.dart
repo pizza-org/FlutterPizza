@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_app/src/model/user.dart';
+import 'package:pizza_app/src/providers/cloud_firestore_api.dart';
+import 'package:pizza_app/src/providers/users.provider.dart';
+import 'package:pizza_app/src/widgets/user_data.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UsersProviders()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -27,15 +37,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final db = CloudFirestoreAPI();
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UsersProviders>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -51,11 +57,20 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            StreamProvider<User>.value(
+                value: db.streamUser("1"),
+                child: UserData(),
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          setState(() {
+            _counter++;
+            userProvider.uploadUser(User(uid: '1', idRol: '1',name: 'Brian', email: 'dentvega6@gmail.com'));
+          });
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
