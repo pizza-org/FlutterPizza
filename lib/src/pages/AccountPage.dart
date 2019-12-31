@@ -101,8 +101,8 @@ class AccountPage extends StatelessWidget {
   Widget _photo({String img}) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      decoration: new BoxDecoration(
-          color: Colors.grey,
+      decoration: BoxDecoration(
+          color: Colors.white,
           shape: BoxShape.circle,
           boxShadow: [
             BoxShadow(
