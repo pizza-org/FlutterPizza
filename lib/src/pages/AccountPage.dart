@@ -101,9 +101,20 @@ class AccountPage extends StatelessWidget {
   Widget _photo({String img}) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(150.0),
-        child: Image.network(img),
+      decoration: new BoxDecoration(
+          color: Colors.grey,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.6),
+              offset: Offset(0, 4),
+              blurRadius: 5,
+            )
+          ]),
+      padding: EdgeInsets.all(2.75),
+      child: CircleAvatar(
+        backgroundImage: NetworkImage(img),
+        radius: 60,
       ),
     );
   }
