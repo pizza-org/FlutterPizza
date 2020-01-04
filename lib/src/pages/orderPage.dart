@@ -6,6 +6,9 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Order Page'),
+      ),
         body: Container(
           alignment: AlignmentDirectional.center,
           child: _buildPizzaSizeList()

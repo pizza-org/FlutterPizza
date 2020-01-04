@@ -5,7 +5,7 @@ import 'package:pizza_app/src/model/flavor.dart';
 import 'package:pizza_app/src/model/ingredient.dart';
 import 'package:pizza_app/src/model/order.dart';
 import 'package:pizza_app/src/model/user.dart';
-import 'package:pizza_app/src/model/user_role.dart';
+import 'package:pizza_app/src/model/userRole.dart';
 
 class CloudFirestoreAPI {
   final String USERS = "users";

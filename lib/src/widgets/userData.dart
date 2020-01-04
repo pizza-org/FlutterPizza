@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/src/model/user.dart';
-import 'package:pizza_app/src/providers/cloud_firestore_api.dart';
 import 'package:provider/provider.dart';
 
 class UserData extends StatelessWidget {

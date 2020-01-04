@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_app/src/model/user.dart';
-import 'package:pizza_app/src/widgets/cloud_firestore_repository.dart';
+import 'package:pizza_app/src/widgets/cloudFirestoreRepository.dart';
 
 class UsersProviders with ChangeNotifier {
   User _user;
