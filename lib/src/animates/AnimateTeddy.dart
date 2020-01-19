@@ -22,7 +22,7 @@ class _AnimatedTeddyState extends State<AnimatedTeddy> {
           child: Column(
             children: <Widget>[
               Container(
-                height: 400,
+                height: 350,
                 width: 350,
                 child: CircleAvatar(
                   backgroundColor: Colors.white,
@@ -35,7 +35,7 @@ class _AnimatedTeddyState extends State<AnimatedTeddy> {
                 ),
               ),
               SizedBox(
-                height: 10.0,
+                height: 5.0,
               ),
               RaisedButton(
                 onPressed: () {
@@ -47,7 +47,7 @@ class _AnimatedTeddyState extends State<AnimatedTeddy> {
                 color: Colors.blue,
               ),
               SizedBox(
-                height: 10.0,
+                height: 5.0,
               ),
               RaisedButton(
                 onPressed: () {
@@ -59,7 +59,7 @@ class _AnimatedTeddyState extends State<AnimatedTeddy> {
                 color: Colors.blue,
               ),
               SizedBox(
-                height: 10.0,
+                height: 5.0,
               ),
               RaisedButton(
                 onPressed: () {
@@ -71,7 +71,7 @@ class _AnimatedTeddyState extends State<AnimatedTeddy> {
                 color: Colors.blue,
               ),
               SizedBox(
-                height: 10.0,
+                height: 5.0,
               ),
               RaisedButton(
                 onPressed: () {

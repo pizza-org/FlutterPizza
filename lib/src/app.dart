@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:pizza_app/src/animates/animate_example.dart';
-import 'package:pizza_app/src/animates/animate_resizing_house.dart';
-import 'package:pizza_app/src/animates/animate_teddy.dart';
+import 'package:pizza_app/src/animates/AnimateExample.dart';
+import 'package:pizza_app/src/animates/AnimateResizingHouse.dart';
+import 'package:pizza_app/src/animates/AnimateTeddy.dart';
 import 'package:pizza_app/src/pages/homePage.dart';
 
 import 'package:pizza_app/src/pages/orderPage.dart';
