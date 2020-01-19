@@ -8,31 +8,37 @@ class OrdersPage extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             _fondoApp(),
-            SingleChildScrollView(
-              child: Column(
-                children: <Widget>[..._titulo()],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 140),
-              width: double.infinity,
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    title: Text(
-                      'Pizza Grande - Anchoas y otros',
-                      style: TextStyle(fontSize: 25, color: Colors.white),
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                  )
-                ],
-              ),
+            Column(
+              children: <Widget>[
+                _titulo(),
+                Container(height: 400, child: _createList())
+              ],
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _createList() {
+    return ListView(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        )
+      ],
     );
   }
 
@@ -57,26 +63,28 @@ class OrdersPage extends StatelessWidget {
     );
   }
 
-  List<Container> _titulo() {
-    return [
-      Container(
-        width: double.infinity,
-        padding: EdgeInsets.only(left: 20, top: 10),
-        child: Text(
-          'Tus',
-          style: TextStyle(fontSize: 50, color: Colors.white),
-          textAlign: TextAlign.start,
+  Widget _titulo() {
+    return Column(
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(left: 20, top: 10),
+          child: Text(
+            'Tus',
+            style: TextStyle(fontSize: 50, color: Colors.white),
+            textAlign: TextAlign.start,
+          ),
         ),
-      ),
-      Container(
-        width: double.infinity,
-        padding: EdgeInsets.only(left: 20),
-        child: Text(
-          'pedidos',
-          style: TextStyle(fontSize: 50, color: Colors.white),
-          textAlign: TextAlign.start,
-        ),
-      )
-    ];
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            'pedidos',
+            style: TextStyle(fontSize: 50, color: Colors.white),
+            textAlign: TextAlign.start,
+          ),
+        )
+      ],
+    );
   }
 }
