@@ -7,7 +7,6 @@ class User {
   bool deleteFlag;
 
   User({this.uid, this.idRol, this.name, this.email}) {
-    print('email $email');
     this.deleteFlag = false;
   }
 
