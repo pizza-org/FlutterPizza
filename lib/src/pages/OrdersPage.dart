@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -11,7 +12,10 @@ class OrdersPage extends StatelessWidget {
             Column(
               children: <Widget>[
                 _titulo(),
-                Container(height: 400, child: _createList())
+                SizedBox(
+                  height: 20,
+                ),
+                Container(height: height * 0.6, child: _createList())
               ],
             )
           ],
@@ -37,7 +41,61 @@ class OrdersPage extends StatelessWidget {
         ),
         Divider(
           color: Colors.white,
-        )
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
+        ListTile(
+          title: Text(
+            'Pizza Grande - Anchoas y otros',
+            style: TextStyle(fontSize: 25, color: Colors.white),
+          ),
+        ),
+        Divider(
+          color: Colors.white,
+        ),
       ],
     );
   }
