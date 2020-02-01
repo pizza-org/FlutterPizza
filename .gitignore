@@ -84,4 +84,3 @@ ios/Runner/GoogleService-Info.plist
 
 pubspec.lock
 android/.settings/org.eclipse.buildship.core.prefs
-ios/Runner/Info.plist
