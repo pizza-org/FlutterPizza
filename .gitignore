@@ -74,3 +74,14 @@
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Ignore additional files.
+.vscode/
+
+.flutter-plugins-dependencies
+android/.project
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+
+pubspec.lock
+android/.settings/org.eclipse.buildship.core.prefs
