@@ -2,10 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:pizza_app/src/pages/signUpPage.dart';
+import 'package:pizza_app/src/widgets/progressDialog.dart';
+import 'package:pizza_app/src/widgets/customAlertDialog.dart';
+
 import 'package:provider/provider.dart';
 import 'package:validate/validate.dart';
-
-import 'package:pizza_app/src/pages/signUpPage.dart';
 
 import 'package:pizza_app/src/providers/authProvider.dart';
 
@@ -52,7 +54,7 @@ class _SignInFormState extends State<SignInForm> {
               ),
               keyboardType: TextInputType.text,
               obscureText: true,
-              validator: _isNotEmptyValidation,
+              validator: _passwordValidation,
               onSaved: (value) => _formData.password = value
             ),
 
@@ -87,14 +89,15 @@ class _SignInFormState extends State<SignInForm> {
 
   String _emailValidation(String value) {
     try {
+      Validate.isEmail(value.trim(), 'The E-mail Address must be a valid email address.');
     } catch (e) {
-      return 'The E-mail Address must be a valid email address.';
+      return e.message;
     }
 
     return null;
   }
 
-  String _isNotEmptyValidation(String value) {
+  String _passwordValidation(String value) {
     try {
       Validate.notEmpty(value);
     } catch (e) {
@@ -105,18 +108,23 @@ class _SignInFormState extends State<SignInForm> {
   }
 
   void _signIn() async {
-    final authProvider = Provider.of<AuthProvider>(context, listen: false );
-
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Processing Data')));
+      final ProgressDialog progressDialog = new ProgressDialog(context);
+      progressDialog.show();
 
-      dynamic result = await authProvider.signIn(_formData.email, _formData.password);
+      try {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false );
+        await authProvider.signIn(_formData.email, _formData.password);
 
-      if (result) {
+        progressDialog.hide();
+
         Navigator.pushReplacementNamed(context, 'home');
+      } catch (e) {
+        progressDialog.hide();
+
+        CustomAlertDialog.show(context, 'Ups', e.message);
       }
     }
   }
