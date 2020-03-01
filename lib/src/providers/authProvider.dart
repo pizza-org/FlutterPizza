@@ -1,7 +1,7 @@
 
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:pizza_app/src/providers/authentication.dart';
 
@@ -19,23 +19,22 @@ class AuthProvider extends ChangeNotifier {
     _auth.onAuthStateChanged().listen(_onAuthStateChanged);
   }
 
-  Future<bool> signIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async {
     try {
       _state = AuthState.Authenticating;
       notifyListeners();
 
       await _auth.signIn(email, password);
 
-      return true;
     } catch (e) {
       _state = AuthState.Unauthenticated;
       notifyListeners();
 
-      return false;
+      throw(e);
     }
   }
 
-  Future<bool> signUp(String email, String password) async {
+  Future<void> signUp(String email, String password) async {
     try {
       _state = AuthState.Authenticating;
       notifyListeners();
@@ -46,12 +45,11 @@ class AuthProvider extends ChangeNotifier {
         await _auth.signIn(email, password);
       }
 
-      return true;
     } catch (e) {
       _state = AuthState.Unauthenticated;
       notifyListeners();
 
-      return false;
+      throw(e);
     }
   }
 
