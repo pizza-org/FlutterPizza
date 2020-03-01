@@ -5,62 +5,58 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
+    return Stack(
+      children: <Widget>[
+        _fondoApp(),
+        Column(
           children: <Widget>[
-            _fondoApp(),
-            Column(
-              children: <Widget>[
-                _title(),
-                _photo(img: 'https://randomuser.me/api/portraits/men/96.jpg'),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  'Nombre: Jhon Doe',
+            _title(),
+            _photo(img: 'https://randomuser.me/api/portraits/men/96.jpg'),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'Nombre: Jhon Doe',
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            Text(
+              'Usuario: noobmaster69',
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            ),
+            SizedBox(height: height * 0.25),
+            ButtonTheme(
+              minWidth: width * 0.8,
+              height: 42,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                elevation: 0,
+                onPressed: () {},
+                color: Color.fromRGBO(255, 255, 255, 0.29),
+                child: Text(
+                  'Cambiar Contraseña',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
-                Text(
-                  'Usuario: noobmaster69',
+              ),
+            ),
+            ButtonTheme(
+              minWidth: width * 0.8,
+              height: 42,
+              child: RaisedButton(
+                elevation: 0,
+                onPressed: () {},
+                color: Color.fromRGBO(255, 255, 255, 0.29),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7)),
+                child: Text(
+                  'Cerrar Sesion',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
-                SizedBox(height: height * 0.25),
-                ButtonTheme(
-                  minWidth: width * 0.8,
-                  height: 42,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7)),
-                    elevation: 0,
-                    onPressed: () {},
-                    color: Color.fromRGBO(255, 255, 255, 0.29),
-                    child: Text(
-                      'Cambiar Contraseña',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                  ),
-                ),
-                ButtonTheme(
-                  minWidth: width * 0.8,
-                  height: 42,
-                  child: RaisedButton(
-                    elevation: 0,
-                    onPressed: () {},
-                    color: Color.fromRGBO(255, 255, 255, 0.29),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(7)),
-                    child: Text(
-                      'Cerrar Sesion',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 

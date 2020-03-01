@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: 'order',
+      initialRoute: 'home',
       routes: {
         'home': (BuildContext context) => HomePage(),
         'order': (BuildContext context) => OrderPage(),
