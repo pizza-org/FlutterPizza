@@ -59,6 +59,7 @@ class CloudFirestoreAPI {
     return ref.setData({
       'uid': company.uid,
       'name': company.name,
+      'bannerUrl': company.bannerUrl,
       'flavors': company.flavors,
       'deleteFlag': company.deleteFlag
     }, merge: true);

@@ -85,3 +85,6 @@ ios/Runner/GoogleService-Info.plist
 
 pubspec.lock
 android/.settings/org.eclipse.buildship.core.prefs
+android/app/.project
+android/app/.settings/org.eclipse.buildship.core.prefs
+android/app/.classpath

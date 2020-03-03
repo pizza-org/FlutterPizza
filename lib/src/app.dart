@@ -3,6 +3,7 @@ import 'package:pizza_app/src/animates/AnimateExample.dart';
 import 'package:pizza_app/src/animates/AnimateResizingHouse.dart';
 import 'package:pizza_app/src/animates/AnimateTeddy.dart';
 import 'package:pizza_app/src/pages/AccountPage.dart';
+import 'package:pizza_app/src/pages/CompaniesPage.dart';
 import 'package:pizza_app/src/pages/homePage.dart';
 import 'package:pizza_app/src/pages/loginPage.dart';
 import 'package:pizza_app/src/pages/orderPage.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
           'signUp': (BuildContext context) => SignUpPage(),
           'home'  : (BuildContext context) => HomePage(),
           'order' : (BuildContext context) => OrderPage(),
+          'companies': (BuildContext context) => CompaniesPage(),
           'animate-test': (BuildContext context) => AnimateExample(),
           'animate-teddy': (BuildContext context) => AnimatedTeddy(),
           'animate-resizing-house': (BuildContext context) =>
