@@ -23,7 +23,7 @@ class AccountPage extends StatelessWidget {
               'Usuario: noobmaster69',
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
-            SizedBox(height: height * 0.25),
+            SizedBox(height: height * 0.2),
             ButtonTheme(
               minWidth: width * 0.8,
               height: 42,
