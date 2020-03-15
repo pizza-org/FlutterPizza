@@ -1,7 +1,9 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:pizza_app/src/pages/AccountPage.dart';
 import 'package:pizza_app/src/pages/orderPage.dart';
+import 'package:pizza_app/src/providers/authProvider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,6 +29,15 @@ class _HomePageState extends State<HomePage> {
       ),
     ];
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+        actions: <Widget>[
+          RaisedButton(
+            child: Text('Logout'),
+            onPressed: () => _logout(context),
+          )
+        ],
+      ),
       body: SafeArea(
         child: Container(child: pages[_selectedPage]),
       ),
@@ -48,5 +59,12 @@ class _HomePageState extends State<HomePage> {
         },
       ),
     );
+  }
+
+  void _logout(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    authProvider.signOut();
+
+    Navigator.pushReplacementNamed(context, 'login');
   }
 }
