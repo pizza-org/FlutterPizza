@@ -1,14 +1,12 @@
+
 import 'package:flutter/material.dart';
 import 'package:pizza_app/src/theme/Theme.dart';
+
 import 'package:provider/provider.dart';
 
-class SettingsPage extends StatelessWidget {
+import 'package:pizza_app/src/theme/mainTheme.dart';
 
-  ThemeData customTheme = ThemeData(
-    brightness:     Brightness.light,
-    primaryColor:   Colors.red,
-    accentColor:    Colors.redAccent,
-  );
+class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +20,20 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             FlatButton(
-                onPressed: () => _themeChanger.setTheme(ThemeData.dark()),
-                child: Text('Dark Theme')),
+              onPressed: () => _themeChanger.setTheme(ThemeData.dark()),
+              child: Text('Dark Theme')),
+
             FlatButton(
-                onPressed: () => _themeChanger.setTheme(ThemeData.light()),
-                child: Text('Light Theme')),
+              onPressed: () => _themeChanger.setTheme(ThemeData.light()),
+              child: Text('Light Theme')),
+
             FlatButton(
-                onPressed: () => _themeChanger.setTheme(customTheme),
-                child: Text('Custom Theme'))
+              onPressed: () => _themeChanger.setTheme(mainTheme),
+              child: Text('Custom Theme'))
           ],
         ),
       ),
     );
   }
+
 }
