@@ -11,6 +11,7 @@ import 'package:pizza_app/src/pages/initPage.dart';
 import 'package:pizza_app/src/pages/loginPage.dart';
 import 'package:pizza_app/src/pages/orderPage.dart';
 import 'package:pizza_app/src/pages/signUpPage.dart';
+import 'package:pizza_app/src/theme/Theme.dart';
 
 import 'package:provider/provider.dart';
 import 'package:pizza_app/src/theme/Theme.dart';
