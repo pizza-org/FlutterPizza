@@ -1,13 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:pizza_app/src/widgets/customAlertDialog.dart';
-import 'package:pizza_app/src/widgets/progressDialog.dart';
+import 'package:pizza_app/src/pages/loginPage.dart';
 
 import 'package:provider/provider.dart';
 import 'package:validate/validate.dart';
 
+import 'package:pizza_app/src/widgets/customAlertDialog.dart';
+import 'package:pizza_app/src/widgets/progressDialog.dart';
 import 'package:pizza_app/src/providers/authProvider.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -31,26 +31,27 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Container(
+      padding: EdgeInsets.all(30.0),
+      child: Form(
         autovalidate: _autovalidate,
         key: _formKey,
         child: Column(
           children: <Widget> [
             TextFormField(
-              autofocus: true,
-              decoration: InputDecoration(
-                icon: Icon(Icons.email),
-                labelText: 'Email'
-              ),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                ),
               keyboardType: TextInputType.emailAddress,
               validator: _emailValidation,
               onSaved: (value) => _formData.email = value.trim()
             ),
 
+            SizedBox(height: 22.0),
+
             TextFormField(
               decoration: InputDecoration(
-                  icon: Icon(Icons.lock),
-                  labelText: 'Password'
+                labelText: 'Contraseña',
               ),
               keyboardType: TextInputType.text,
               obscureText: true,
@@ -59,34 +60,51 @@ class _SignUpFormState extends State<SignUpForm> {
               onSaved: (value) => _formData.password = value.trim()
             ),
 
+            SizedBox(height: 22.0),
+
             TextFormField(
               decoration: InputDecoration(
-                  icon: Icon(Icons.lock),
-                  labelText: 'Confirm password'
+                labelText: 'Confirmar contraseña',
               ),
               keyboardType: TextInputType.text,
               obscureText: true,
               validator: (value) => _passwordConfirmValidation(value, this._formData.password),
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-            ),
+            SizedBox(height: 22.0),
 
-            Container(
+            SizedBox(
+              width: 200.0,
+              height: 45.0,
               child: RaisedButton(
                 child: Text(
-                  'SignUp',
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                  'Registrar',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
-                color: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0),
+                    side:
+                    BorderSide(color: Theme.of(context).accentColor)),
+                color: Theme.of(context).accentColor,
                 onPressed: _signUp,
+              )
+            ),
+
+            SizedBox(height: 12.0),
+
+            FlatButton(
+              child: Text(
+                'Ya tengo cuenta',
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontSize: 16.0
+                )
               ),
-            )
+              onPressed: _moveToLogin,
+            ),
           ],
         )
+      )
     );
   }
 
@@ -143,6 +161,15 @@ class _SignUpFormState extends State<SignUpForm> {
         _autovalidate = true;
       });
     }
+  }
+
+  void _moveToLogin() {
+    _formKey.currentState.reset();
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
   }
 
 }

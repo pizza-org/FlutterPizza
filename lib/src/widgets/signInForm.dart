@@ -2,14 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:pizza_app/src/pages/signUpPage.dart';
-import 'package:pizza_app/src/widgets/progressDialog.dart';
-import 'package:pizza_app/src/widgets/customAlertDialog.dart';
-
 import 'package:provider/provider.dart';
 import 'package:validate/validate.dart';
 
+import 'package:pizza_app/src/pages/signUpPage.dart';
 import 'package:pizza_app/src/providers/authProvider.dart';
+import 'package:pizza_app/src/widgets/customAlertDialog.dart';
+import 'package:pizza_app/src/widgets/progressDialog.dart';
 
 class SignInForm extends StatefulWidget {
 
@@ -31,26 +30,26 @@ class _SignInFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Container(
+      padding: EdgeInsets.all(30.0),
+      child: Form(
         key: _formKey,
         child: Column(
-          children: <Widget> [
+          children: <Widget>[
             TextFormField(
-              autofocus: true,
               decoration: InputDecoration(
-                icon: Icon(Icons.email),
-                labelText: 'Email'
+                labelText: 'Email',
               ),
               keyboardType: TextInputType.emailAddress,
               validator: _emailValidation,
               onSaved: (value) => _formData.email = value.toString().trim()
             ),
 
+            SizedBox(height: 22.0),
+
             TextFormField(
-              autofocus: true,
               decoration: InputDecoration(
-                  icon: Icon(Icons.lock),
-                  labelText: 'Password'
+                  labelText: 'Contraseña',
               ),
               keyboardType: TextInputType.text,
               obscureText: true,
@@ -58,38 +57,45 @@ class _SignInFormState extends State<SignInForm> {
               onSaved: (value) => _formData.password = value
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-            ),
+            SizedBox(height: 22.0),
 
-            Container(
+            SizedBox(
+              width: 200.0,
+              height: 45.0,
               child: RaisedButton(
                 child: Text(
-                  'SignIn',
-                  style: TextStyle(
-                    color: Colors.white
-                  ),
+                  'Iniciar sesión',
+                  style: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
-                color: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(20.0),
+                  side: BorderSide(color: Theme.of(context).accentColor)),
+                color: Theme.of(context).accentColor,
                 onPressed: _signIn,
-              ),
+              )
             ),
+
+            SizedBox(height: 12.0),
 
             FlatButton(
               child: Text(
-                  'Sign Up for PizzaApp',
-                  style: TextStyle(fontSize: 20.0)
-              ),
-              onPressed: moveToRegister,
+                  'No tengo cuenta',
+                  style: TextStyle(
+                      color: Theme.of(context).accentColor,
+                      fontSize: 16.0)
+                  ),
+              onPressed: _moveToRegister,
             ),
           ],
         )
+      )
     );
   }
 
   String _emailValidation(String value) {
     try {
-      Validate.isEmail(value.trim(), 'The E-mail Address must be a valid email address.');
+      Validate.isEmail(
+          value.trim(), 'The E-mail Address must be a valid email address.');
     } catch (e) {
       return e.message;
     }
@@ -115,7 +121,7 @@ class _SignInFormState extends State<SignInForm> {
       progressDialog.show();
 
       try {
-        final authProvider = Provider.of<AuthProvider>(context, listen: false );
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
         await authProvider.signIn(_formData.email, _formData.password);
 
         progressDialog.hide();
@@ -129,7 +135,7 @@ class _SignInFormState extends State<SignInForm> {
     }
   }
 
-  void moveToRegister() {
+  void _moveToRegister() {
     _formKey.currentState.reset();
 
     Navigator.push(
